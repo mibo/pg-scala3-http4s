@@ -1,5 +1,23 @@
-@main def hello: Unit = 
-  println("Hello world!")
-  println(msg)
+import cats.effect._
+import org.http4s.HttpRoutes
+import org.http4s.dsl.io._
+import org.http4s.implicits._
+import org.http4s.blaze.server._
+import scala.concurrent.ExecutionContext.global
 
-def msg = "I was compiled by Scala 3. :)"
+object Main extends IOApp {
+
+  val helloWorldService = HttpRoutes.of[IO] {
+    case GET -> Root / "hello" / name =>
+      Ok(s"Hello, $name.")
+  }.orNotFound
+
+  def run(args: List[String]): IO[ExitCode] =
+    BlazeServerBuilder[IO](global)
+      .bindHttp(8080, "localhost")
+      .withHttpApp(helloWorldService)
+      .serve
+      .compile
+      .drain
+      .as(ExitCode.Success)
+}
