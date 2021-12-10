@@ -10,6 +10,8 @@ object Main extends IOApp {
   val helloWorldService = HttpRoutes.of[IO] {
     case GET -> Root / "hello" / name =>
       Ok(s"Hello, $name.")
+    case POST -> Root / "hello" / name =>
+      Ok(s"Hello, $name.")
   }.orNotFound
 
   def run(args: List[String]): IO[ExitCode] =
