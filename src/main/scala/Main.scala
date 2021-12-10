@@ -13,7 +13,7 @@ object Main extends IOApp {
   }.orNotFound
 
   def run(args: List[String]): IO[ExitCode] =
-    BlazeServerBuilder[IO](global)
+    BlazeServerBuilder[IO].withExecutionContext(global)
       .bindHttp(8080, "localhost")
       .withHttpApp(helloWorldService)
       .serve

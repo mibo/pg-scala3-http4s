@@ -11,10 +11,10 @@ lazy val root = project
     scalaVersion := scala3Version,
 
     libraryDependencies ++= Seq(
-      "com.novocode" % "junit-interface" % "0.11" % "test",
       "org.http4s" %% "http4s-dsl" % http4sVersion,
       "org.http4s" %% "http4s-blaze-server" % http4sVersion,
       "org.http4s" %% "http4s-blaze-client" % http4sVersion,
-      "org.typelevel" %% "cats-effect" % "3.3.0"
+      "org.typelevel" %% "cats-effect" % "3.3.0",
+      "org.scalatest" %% "scalatest" % "3.2.10" % "test"
     )
   )
