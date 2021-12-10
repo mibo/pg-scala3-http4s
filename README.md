@@ -9,13 +9,15 @@ This is a normal sbt project. You can compile code with `sbt compile`, run it wi
 For more information on the sbt-dotty plugin, see the
 [scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
 
+## How to run
+
+Start with `sbt run` and call `http :8080/hello/mibo` (with HTTPie) to get a response.
+
 ## Dependencies used
 
 ### Http4s
 
 Started with [service tutorial](https://http4s.org/v0.23/service/).
-
-Start with `sbt run` and call `http :8080/hello/mibo` (with HTTPie) to get a response.
 
 ### ScalaTest
 
